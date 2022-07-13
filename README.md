@@ -26,3 +26,21 @@
             twoContext = httpClient.get(Endpoint().movie).body()
         }.await()
     }
+
+## Content Negotable Response
+
+        install(ContentNegotiation) {
+            gson()
+        }
+
+        //or
+        install(ContentNegotiation){
+            json(Json {
+                prettyPrint = true
+                isLenient = true
+            })
+        }
+
+        install(ContentNegotiation){
+            xml()
+        }
