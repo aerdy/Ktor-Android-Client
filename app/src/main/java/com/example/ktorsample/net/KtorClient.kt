@@ -10,12 +10,11 @@ import io.ktor.client.plugins.kotlinx.serializer.*
 import io.ktor.serialization.gson.*
 import io.ktor.serialization.kotlinx.*
 import io.ktor.serialization.kotlinx.json.*
+import io.ktor.serialization.kotlinx.xml.*
 import kotlinx.serialization.json.Json
 import kotlinx.serialization.serializer
 
 object KtorClient {
-//    private const val AUTHORIZATION_HEADER = "Authorization"
-//    private var API_KEY: String = "Your API Key here"
 
     private val client = HttpClient(Android) {
 //        defaultRequest {
@@ -26,6 +25,17 @@ object KtorClient {
             gson()
         }
 
+        //or
+        install(ContentNegotiation){
+            json(Json {
+                prettyPrint = true
+                isLenient = true
+            })
+        }
+
+        install(ContentNegotiation){
+            xml()
+        }
 
     }
 
