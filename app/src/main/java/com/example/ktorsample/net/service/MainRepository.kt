@@ -11,7 +11,7 @@ object MainRepository {
 
     suspend fun search(): MovieResponse{
             //val response = YelpAppServicesImpl.search(term = term ?: "")
-            val response = AppServicesImpl.search()
+            val response = AppServicesImpl.getMovie()
             Log.e("data",response.toString())
             return response
     }

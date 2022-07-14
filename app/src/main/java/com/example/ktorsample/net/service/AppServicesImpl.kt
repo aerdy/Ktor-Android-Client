@@ -20,7 +20,18 @@ object AppServicesImpl : AppServices {
 
     override suspend fun postMovie(): SuccessResponse {
         val responseData:SuccessResponse = httpClient.post(Endpoint().movie){
+            //header
+            headers {
+                append("name1","value1")
+                append("name2","value2")
+                append("name3","value3")
+
+            }
             setBody(PostMovie("123","123"))
+            //or
+            url {
+                parameters.append("nameparam","value")
+            }
         }.body()
         return responseData
     }
